@@ -9,10 +9,12 @@ public class BankTellerSimulation {
     static final int ADJUSTMENT_PERIOD = 1000;
     public static void main(String[] args) throws Exception {
         ExecutorService exec = Executors.newCachedThreadPool();
+
         // Если очередь слишком длинна, клиенты уходят:
         CustomerLine customers =
                 new CustomerLine(MAX_LINE_SIZE);
         exec.execute(new CustomerGenerator(customers));
+
         // TellerManager добавляет и убирает кассиров
         // по мере необходимости:
         exec.execute(new TellerManager(
@@ -53,4 +55,4 @@ public class BankTellerSimulation {
         стабильной регулировки количества кассиров.
         У всех управляющих систем в той или иной мере присутствуют проблемы со стабильностью;
         слишком быстрая реакция на изменения снижает стабильность,
-        а слишком медленная переводит систему в одно из крайних состояний.*/
+        а слишком медленная переводит систему в одно из крайних состояний.  */
